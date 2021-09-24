@@ -13,16 +13,16 @@ class ArticlesController < ApplicationController
     render json: @article
   end
 
-  # POST /articles
-  # def create
-  #   @article = Article.new(article_params)
+  POST /articles
+  def create
+    @article = Article.new(article_params)
 
-  #   if @article.save
-  #     render json: @article, status: :created, location: @article
-  #   else
-  #     render json: @article.errors, status: :unprocessable_entity
-  #   end
-  # end
+    if @article.save
+      render json: @article, status: :created, location: @article
+    else
+      render json: @article.errors, status: :unprocessable_entity
+    end
+  end
 
   def create2 ###### test create and create2
     @article = Article.new(article_params)
