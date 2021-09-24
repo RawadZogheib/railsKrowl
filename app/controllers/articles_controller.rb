@@ -24,7 +24,7 @@ class ArticlesController < ApplicationController
     end
   end
 
-  def create2
+  def create2 ###### test create and create2
     @article = Article.new(article_params)
 
     if @article.save
