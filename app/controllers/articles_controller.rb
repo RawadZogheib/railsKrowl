@@ -24,15 +24,7 @@ class ArticlesController < ApplicationController
     end
   end
 
-  def create2 ###### test create and create2
-    @article = Article.new(article_params)
-
-    if @article.save
-      render json: @article, status: :created, location: @article
-    else
-      render json: @article.errors, status: :unprocessable_entity
-    end
-  end
+  
 
   # PATCH/PUT /articles/1
   def update
