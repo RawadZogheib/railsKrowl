@@ -15,9 +15,27 @@ module Api
     render json: @rticle
   end
 
-  # POST /articles
+  # POST /articles/create
+
   def create
     article = Article.new(article_params)
+     if article.name=='claraa'
+         render json: {status: 'EXIST', message:'Saved article', data:article},status: :ok
+     else
+         if article.save
+           render json: {status: 'SUCCESS', message:'Saved article', data:article},status: :ok
+         else
+           render json: {status: 'ERROR', message:'Article not saved', data:article.errors},status: :unprocessable_entity
+         end
+     end
+  end
+
+
+
+
+  # POST /articles/create2
+  def create1
+   article = Article.new(article_params)
     if article.name=='claraa'
         render json: {status: 'EXIST', message:'Saved article', data:article},status: :ok
     else
@@ -28,6 +46,21 @@ module Api
         end
     end
  end
+
+ # POST /articles/create2
+ def create2
+  article = Article.new(article_params)
+  if article.name=='claraa'
+      render json: {status: 'EXIST', message:'Saved article', data:article},status: :ok
+  else
+      if article.save
+        render json: {status: 'SUCCES2', message:'Saved article', data:article},status: :ok
+      else
+        render json: {status: 'ERROR', message:'Article not saved', data:article.errors},status: :unprocessable_entity
+      end
+  end
+end
+
 
   # PATCH/PUT /articles/1
   def update
@@ -53,6 +86,7 @@ module Api
     def article_params
       params.require(:article).permit(:name, :email, :password)
     end
+
 end
 
     end
